@@ -7,10 +7,20 @@ const canvasWidth = canvas.width;
 const canvasHeight = canvas.height;
 
 
-function drawSnake(){
-    ctx.fillStyle = 'white';
+//add snake image
+let snokoSprite = new Image();
+snokoSprite.src = '/Users/jmess/Documents/snoko/snoko.png'; 
+
+// Wait for image to load before drawing
+snokoSprite.onload = function() {
+    drawSnake();
+};
+
+function drawSnake() {
     snake.forEach(segment => {
-        ctx.fillRect(segment.x * gridSize, segment.y * gridSize, gridSize, gridSize);
+        const x = segment.x * gridSize;
+        const y = segment.y * gridSize;
+        ctx.drawImage(snokoSprite, x, y, gridSize * 5, gridSize * 5);
     });
 }
 
